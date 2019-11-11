@@ -26,15 +26,20 @@ namespace Datamatrix
         private void btnEncode_Click(object sender, EventArgs e)
         {
             DmtxImageEncoder encoder = new DmtxImageEncoder();
-            Bitmap img = encoder.EncodeImage(textBoxEnc.Text);
-            
-            //img.Size = picBox.Size;
-            picBox.Image = img;
-            picBox.Width = img.Width;
-            picBox.Height = img.Height;
-            picBox.Left = 139;
-            picBox.Top = 95;
-            
+            try
+            {
+                Bitmap img = encoder.EncodeImage(textBoxEnc.Text);
+           
+                picBox.Image = img;
+                picBox.Width = img.Width;
+                picBox.Height = img.Height;
+                picBox.Left = 139;
+                picBox.Top = 95;
+            }
+            catch
+            {
+                textBoxEnc.Text = "0";
+            }
         }
 
         private void picBox_Click(object sender, EventArgs e)
